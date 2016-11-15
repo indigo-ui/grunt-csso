@@ -76,6 +76,11 @@ module.exports = (grunt) => {
       } else {
         // add banner.
         css = banner + css;
+        // add map if possible.
+        const mapDest = dest + '.map';
+        if (map) {
+            css = css + '\n/*# sourceMappingURL=' + path.basename(mapDest) + ' */'
+        }
         // create all intermediate folders
         grunt.file.write(dest, '');
         // actually write the file
@@ -88,7 +93,6 @@ module.exports = (grunt) => {
             grunt.log.write(maxmin(original, css, options.report === 'gzip'));
           }
           if (map) {
-              const mapDest = dest + '.map';
               grunt.file.write(mapDest, map);
               grunt.log.write('File ' + chalk.cyan(mapDest) + ' created' + (options.report ? ': ' : '.'));
           }
