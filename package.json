@@ -31,9 +31,6 @@
     "grunt": "grunt",
     "test": "grunt test"
   },
-  "peerDependencies": {
-    "grunt": ">=1.0.0"
-  },
   "dependencies": {
     "async": "^2.1.2",
     "chalk": "^1.1.3",
